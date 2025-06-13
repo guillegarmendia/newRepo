@@ -1,0 +1,3 @@
+[submodule "Desktop/recu/Desktop/recu/newRepo"]
+	path = Desktop/recu/Desktop/recu/newRepo
+	url = git@github.com:guillegarmendia/newRepo.git
