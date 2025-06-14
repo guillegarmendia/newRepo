@@ -7,10 +7,16 @@
 
 void manageDisc(int option) {
     Discount d;
-    char discCode[MAX];
     FILE *fp;
     FILE *temp;
     int found = 0;
+    char discCode[MAX];
+    char newDate[MAX];
+    char line[200];
+    char rest[MAX];
+    char codeDelete[MAX];
+    char codeRead[MAX];
+    int codeChange;
 
     switch(option) {
         case 1:
@@ -49,10 +55,7 @@ void manageDisc(int option) {
 
         case 2:
             found = 0;
-            char newDate[MAX];
-            char line[200];
-            char rest[MAX];
-            int codeChange;
+
 
             printf("Enter the code to change: ");
             scanf("%d", &codeChange);
@@ -131,6 +134,68 @@ void manageDisc(int option) {
             printf("%d has not been found.\n", codeChange);
         }
 
+
+            break;
+
+        case 3:
+            found = 0;
+
+            printf("Enter code to delete: ");
+            fgets(codeDelete, sizeof(codeDelete), stdin);
+            codeDelete[strlen(codeDelete) - 1] = '\0';
+
+        fp = fopen("Discount.txt", "r");
+        temp = fopen("Discount_temp.txt", "w");
+
+        fgets(line, sizeof(line), fp);
+
+        while(!feof(fp)) {
+            line[strlen(line) - 1] = '\0';
+
+            int separation = 0;
+            int i = 0;
+            int j = 0;
+            int l = 0;
+
+            for( i = 0; line[i] != '\0'; i++) {
+                if(line[i] == ';') {
+                    separation++;
+                    i++;
+                }
+
+                if(separation == 0) {
+                    codeRead[j] = line[i];
+                    j++;
+                } else {
+                    codeRead[j] = '\0';
+                    rest[l] = line[i];
+                    l++;
+                }
+
+            }
+
+            rest[l] = '\0';
+
+            if(strcmp(codeRead,codeDelete) == 0) {
+                found = 1;
+            } else {
+                fprintf(temp,"%s\n", line);
+            }
+
+            fgets(line, sizeof(line), fp);
+        }
+
+        fclose(fp);
+        fclose(temp);
+
+        remove("Discount.txt");
+        rename("Discount_temp.txt", "Discount.txt");
+
+        if(found) {
+            printf("%s has been deleted successfully\n",codeDelete);
+        } else {
+            printf("%s has not been found.\n", codeDelete);
+        }
 
             break;
 
