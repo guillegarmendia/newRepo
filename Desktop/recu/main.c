@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "Register.h"
 #include "Shop.h"
+#include "TDD.h"
 
 void showRegisterMenu() {
     printf("\n\t\t1.1 Register Shop");
@@ -77,6 +78,7 @@ int main() {
                     getchar();
                     modifyShop(modifyOption);
                     break;
+
                 default:
                     printf("Invalid option\n");
                 break;

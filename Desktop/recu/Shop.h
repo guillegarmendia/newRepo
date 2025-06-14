@@ -5,7 +5,11 @@
 
 typedef struct {
 
-
+char product[MAX];
+    char category[MAX];
+    float price;
+    int quantity;
+    char description[MAX];
 
 } Shop;
 
