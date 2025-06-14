@@ -631,9 +631,9 @@ void proximityShops() {
     }
 
     Coordinates client;
-    printf("Enter latitude:: ");
+    printf("Introduce la latitud del cliente: ");
     scanf("%f", &client.latitude);
-    printf("Enter longitude: ");
+    printf("Introduce la longitud del cliente: ");
     scanf("%f", &client.longitude);
 
     int nearest_indices[5];
