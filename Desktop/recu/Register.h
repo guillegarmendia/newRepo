@@ -15,4 +15,6 @@ typedef struct {
 
 void registerShop();
 
+void registerWorker();
+
 #endif

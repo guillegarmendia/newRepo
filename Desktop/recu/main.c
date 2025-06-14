@@ -40,7 +40,7 @@ int main() {
                             registerShop();
                             break;
                         case 2:
-
+                            registerWorker();
                             break;
                         case 3:
 

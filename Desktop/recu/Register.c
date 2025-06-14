@@ -60,10 +60,11 @@ void registerWorker() {
     fgets(shop.password, sizeof(shop.password), stdin);
     shop.password[strlen(shop.password)-1] = '\0';
 
-    printf("Shop: \n");
+    printf("Shop: ");
     fgets(shop.shop, sizeof(shop.shop), stdin);
     shop.shop[strlen(shop.shop)-1] = '\0';
 
+    fprintf("%s;%s;%s;%s\n", shop.worker, shop.mail, shop.password, shop.shop);
     fclose(fp);
 
 }
