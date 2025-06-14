@@ -5,7 +5,7 @@
 
 void registerShop() {
 
-    Shop shop;
+    Register shop;
     FILE* fp = fopen("Shops.txt","a");
 
     if (fp == NULL) {
@@ -39,7 +39,7 @@ void registerShop() {
 
 void registerWorker() {
 
-    Shop shop;
+    Register r;
     FILE* fp = fopen("Workers.txt","a");
 
     if (fp == NULL) {
@@ -48,23 +48,58 @@ void registerWorker() {
     }
 
     printf("Name: ");
-    fgets(shop.worker, sizeof(shop.worker), stdin);
-    shop.worker[strlen(shop.worker)-1] = '\0';
+    fgets(r.worker, sizeof(r.worker), stdin);
+    r.worker[strlen(r.worker)-1] = '\0';
 
 
     printf("Mail: ");
-    fgets(shop.mail, sizeof(shop.mail), stdin);
-    shop.mail[strlen(shop.mail)-1] = '\0';
+    fgets(r.mail, sizeof(r.mail), stdin);
+    r.mail[strlen(r.mail)-1] = '\0';
 
     printf("Password: ");
-    fgets(shop.password, sizeof(shop.password), stdin);
-    shop.password[strlen(shop.password)-1] = '\0';
+    fgets(r.password, sizeof(r.password), stdin);
+    r.password[strlen(r.password)-1] = '\0';
 
     printf("Shop: ");
-    fgets(shop.shop, sizeof(shop.shop), stdin);
-    shop.shop[strlen(shop.shop)-1] = '\0';
+    fgets(r.shop, sizeof(r.shop), stdin);
+    r.shop[strlen(r.shop)-1] = '\0';
 
-    fprintf(fp, "%s;%s;%s;%s\n", shop.worker, shop.mail, shop.password, shop.shop);
+    fprintf(fp, "%s;%s;%s;%s\n", r.worker, r.mail, r.password, r.shop);
     fclose(fp);
+
+}
+
+
+void registerClient() {
+
+    Register r;
+    FILE* fp = fopen("Client.txt","a");
+
+    if (fp == NULL) {
+        printf("Error opening Client.txt\n");
+        return;
+    }
+
+    printf("Name: ");
+    fgets(r.client, sizeof(r.client), stdin);
+    r.client[strlen(r.client)-1] = '\0';
+
+
+    printf("Mail: ");
+    fgets(r.mail, sizeof(r.mail), stdin);
+    r.mail[strlen(r.mail)-1] = '\0';
+
+    printf("Password: ");
+    fgets(r.password, sizeof(r.password), stdin);
+    r.password[strlen(r.password)-1] = '\0';
+
+    printf("Card number: ");
+    scanf("%d", &r.numCard);
+    getchar();
+
+    printf("Balance: ");
+    scanf("%f", &r.balance);
+
+
 
 }
