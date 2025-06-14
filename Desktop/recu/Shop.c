@@ -27,7 +27,6 @@ void modifyShop(int modifyOption) {
 
     switch(modifyOption) {
         case 1:
-
             printf("Introduce the name of the product to change its price: ");
             fgets(s.product, MAX, stdin);
             s.product[strlen(s.product) - 1] = '\0';
@@ -455,4 +454,32 @@ void modifyShop(int modifyOption) {
         break;
     }
 
+}
+
+void addProduct() {
+    Shop s;
+    FILE* fp = fopen("Products.txt", "a");
+
+    printf("Enter the product's name: ");
+    fgets(s.product, MAX, stdin);
+    s.product[strlen(s.product) - 1] = '\0';
+
+    printf("Enter the category: ");
+    fgets(s.category, MAX, stdin);
+    s.category[strlen(s.category) - 1] = '\0';
+
+    printf("Enter the price: ");
+    scanf("%f", &s.price);
+    getchar();
+
+    printf("Enter the number of stocks: ");
+    scanf("%d", &s.quantity);
+    getchar();
+
+    printf("Enter the descripction: ");
+    fgets(s.description, MAX, stdin);
+    s.description[strlen(s.description) - 1] = '\0';
+
+    fprintf(fp, "%s;%s;%.2f;%d;%s", s.product, s.category, s.price, s.quantity, s.description);
+    fclose(fp);
 }

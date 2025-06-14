@@ -13,6 +13,7 @@ void showRegisterMenu() {
 
 void showStaffMenu() {
     printf("\n\t\t1.1 Modify shop's configuration");
+    printf("\n\t\t1.2 Add product");
     printf("\n\t\t1.4 Back");
     printf("\nOption: ");
 }
@@ -78,6 +79,11 @@ int main() {
                     getchar();
                     modifyShop(modifyOption);
                     break;
+
+                case 2:
+                    addProduct();
+                break;
+
 
                 default:
                     printf("Invalid option\n");
