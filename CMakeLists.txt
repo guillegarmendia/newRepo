@@ -8,4 +8,6 @@ include_directories(Desktop/recu)
 add_executable(newRepo_dev
     Desktop/recu/main.c
     Desktop/recu/Register.c
-    Desktop/recu/Register.h)
+    Desktop/recu/Register.h
+        Desktop/recu/Shop.c
+        Desktop/recu/Shop.h)
