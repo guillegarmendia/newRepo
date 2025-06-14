@@ -1,1 +1,4 @@
 Mercadona;Balmes;644783516;mercadona@gmail.com
+Carrefour;Diagonal;933214567;carrefour@contact.com
+Lidl;Passeig de Gràcia;612345678;lidl.barcelona@mail.com
+Dia;Gran Via;622334455;dia.customer@service.com
