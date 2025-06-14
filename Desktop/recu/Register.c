@@ -64,7 +64,7 @@ void registerWorker() {
     fgets(shop.shop, sizeof(shop.shop), stdin);
     shop.shop[strlen(shop.shop)-1] = '\0';
 
-    fprintf("%s;%s;%s;%s\n", shop.worker, shop.mail, shop.password, shop.shop);
+    fprintf(fp, "%s;%s;%s;%s\n", shop.worker, shop.mail, shop.password, shop.shop);
     fclose(fp);
 
 }
