@@ -621,4 +621,29 @@ void find5NearestShops(ShopUbi *s, int numShops, Coordinates client, int *neares
 }
 
 
+void proximityShops() {
+    ShopUbi shops[100];
+    int numShops = loadShopsFromFile("Shops.txt", shops, 100);
 
+    if (numShops == 0) {
+        printf("No shops loaded\n");
+        return;
+    }
+
+    Coordinates client;
+    printf("Introduce la latitud del cliente: ");
+    scanf("%f", &client.latitude);
+    printf("Introduce la longitud del cliente: ");
+    scanf("%f", &client.longitude);
+
+    int nearest_indices[5];
+    find5NearestShops(shops, numShops, client, nearest_indices);
+
+    printf("Las 5 botigas más cercanas son:\n");
+    for (int i = 0; i < 5; i++) {
+        int idx = nearest_indices[i];
+        if (idx != -1) {
+            printf("%s\n", shops[idx].name);
+        }
+    }
+}
