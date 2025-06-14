@@ -1,10 +1,18 @@
 #include <stdio.h>
 #include "Register.h"
+#include "Shop.h"
+#include "TDD.h"
 
 void showRegisterMenu() {
     printf("\n\t\t1.1 Register Shop");
     printf("\n\t\t1.2 Register Staff Member");
     printf("\n\t\t1.3 Register Customer");
+    printf("\n\t\t1.4 Back");
+    printf("\nOption: ");
+}
+
+void showStaffMenu() {
+    printf("\n\t\t1.1 Modify shop's configuration");
     printf("\n\t\t1.4 Back");
     printf("\nOption: ");
 }
@@ -22,6 +30,8 @@ int main() {
 
     int option = 0;
     int registerOption = 0;
+    int staffOption = 0;
+    int modifyOption = 0;
 
     do {
         showMainMenu();
@@ -56,7 +66,23 @@ int main() {
                 break;
 
             case 2:
+                showStaffMenu();
+                scanf("%d", &staffOption);
+                getchar();
 
+            switch (staffOption) {
+                case 1:
+                    printf("\n\t1.Update product price\n\t2.Adjust stock\n\t3.Change shop's name\n\t4.Change adress\n\t5.Change phone number");
+                    printf("\nOption: ");
+                    scanf("%d", &modifyOption);
+                    getchar();
+                    modifyShop(modifyOption);
+                    break;
+
+                default:
+                    printf("Invalid option\n");
+                break;
+            }
                 break;
 
             case 3:
