@@ -31,7 +31,7 @@ void showMainMenu() {
 }
 
 int main() {
-    srand(time(NULL));
+    srand(time(NULL));                      //Para calcular valores random
 
     printf("\n----------------------\n");
     printf("--LS ELECTRONICS HUB--\n");

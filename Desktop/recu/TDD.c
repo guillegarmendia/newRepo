@@ -1,3 +1,4 @@
+#include <float.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -46,4 +47,24 @@ void TEST_shouldReturnShop() {
     char *shop = readShop();
 
     printf("Shop's name: %s\n", shop);
+}
+
+float getLowestDist() {
+    float dist[5] =  {99.6, 23.98, 45.76,95.07,78.99};
+    float minDist = FLT_MAX;
+
+    for (int i = 0; i < 5; i++) {
+        if(minDist > dist[i]) {
+            minDist = dist[i];
+        }
+    }
+
+    return minDist;
+}
+
+
+void TEST_findDistante() {
+    float dist = getLowestDist();
+
+    printf("Lowest dis: %.2f", dist);
 }
