@@ -2,3 +2,4 @@ oreos;cookies;2.00;100;for the breakfast
 kitkat;chocolate;2.60;150;great with coffee
 colgate;toothpaste;3.00;75;fresh mint flavor
 detergent;cleaning;3.50;100;removes tough stains
+water;drink;1.50;200;mineral water

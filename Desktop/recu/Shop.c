@@ -480,5 +480,6 @@ void addProduct() {
     fgets(s.description, MAX, stdin);
     s.description[strlen(s.description) - 1] = '\0';
 
+    fprintf(fp, "%s;%s;%.2f;%d;%s", s.product, s.category, s.price, s.quantity, s.description);
     fclose(fp);
 }
