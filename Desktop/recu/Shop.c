@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include "Shop.h"
+#include <float.h>
+#include <math.h>
+#include <Llibreria Recuperació-20250406/operations.h>
 #include "Register.h"
 #include "TDD.h"
+
+#define EARTH_RADIUS_KM 6371.0f
 
 
 void modifyShop(int modifyOption) {
@@ -20,6 +25,8 @@ void modifyShop(int modifyOption) {
     char newName[MAX];
     char newAddress[MAX];
     char phone[MAX];
+    float latitude = 0.0f, longitude = 0.0f;
+    char latStr[20], lonStr[20];
     int newPhone;
     int i;
     int found = 0;
@@ -222,6 +229,8 @@ void modifyShop(int modifyOption) {
             int j = 0;
             int g = 0;
             int k = 0;
+            int l = 0;
+            int p = 0;
 
             int separation = 0;
             for(i = 0; line[i] != '\0'; i++) {
@@ -254,13 +263,26 @@ void modifyShop(int modifyOption) {
                     k++;
                 }
 
+                if(separation == 4) {
+                    r.mail[k] = '\0';
+                    latStr[l] = line[i];
+                    l++;
+                }
+
+                if(separation == 5) {
+                    latStr[l] = '\0';
+                    lonStr[p] = line[i];
+                    p++;
+                }
+
             }
 
-            r.mail[k] = '\0';
-
+            lonStr[j] = '\0';
+            latitude = atof(latStr);
+            longitude = atof(lonStr);
 
             if(strcmp(r.shop, shopName) == 0) {
-                fprintf(tempFile, "%s;%s;%s;%s\n", newName,r.adress, phone, r.mail);
+                fprintf(tempFile, "%s;%s;%s;%s;%.6f;%.6f\n", newName, r.adress, phone, r.mail, latitude, longitude);
                 found = 1;
             } else {
                 fprintf(tempFile, "%s\n", line);
@@ -305,6 +327,8 @@ void modifyShop(int modifyOption) {
             int j = 0;
             int g = 0;
             int k = 0;
+            int l = 0;
+            int p = 0;
 
             int separation = 0;
             for(i = 0; line[i] != '\0'; i++) {
@@ -337,13 +361,26 @@ void modifyShop(int modifyOption) {
                     k++;
                 }
 
+                if(separation == 4) {
+                    r.mail[k] = '\0';
+                    latStr[l] = line[i];
+                    l++;
+                }
+
+                if(separation == 5) {
+                    latStr[l] = '\0';
+                    lonStr[p] = line[i];
+                    p++;
+                }
+
             }
 
-            r.mail[k] = '\0';
-
+            lonStr[j] = '\0';
+            latitude = atof(latStr);
+            longitude = atof(lonStr);
 
             if(strcmp(r.shop, shopName) == 0) {
-                fprintf(tempFile, "%s;%s;%s;%s\n", r.shop,newAddress, phone, r.mail);
+                fprintf(tempFile, "%s;%s;%s;%s;%.6f;%.6f\n", r.shop, newAddress, phone, r.mail, latitude, longitude);
                 found = 1;
             } else {
                 fprintf(tempFile, "%s\n", line);
@@ -388,6 +425,8 @@ void modifyShop(int modifyOption) {
             int j = 0;
             int g = 0;
             int k = 0;
+            int l = 0;
+            int p = 0;
 
             int separation = 0;
             for(i = 0; line[i] != '\0'; i++) {
@@ -420,13 +459,26 @@ void modifyShop(int modifyOption) {
                     k++;
                 }
 
+                if(separation == 4) {
+                    r.mail[k] = '\0';
+                    latStr[l] = line[i];
+                    l++;
+                }
+
+                if(separation == 5) {
+                    latStr[l] = '\0';
+                    lonStr[p] = line[i];
+                    p++;
+                }
+
             }
 
-            r.mail[k] = '\0';
-
+            lonStr[j] = '\0';
+            latitude = atof(latStr);
+            longitude = atof(lonStr);
 
             if(strcmp(r.shop, shopName) == 0) {
-                fprintf(tempFile, "%s;%s;%d;%s\n", r.shop,r.adress, newPhone, r.mail);
+                fprintf(tempFile, "%s;%s;%d;%s;%.6f;%.6f\n", r.shop,r.adress, newPhone, r.mail,latitude,longitude);
                 found = 1;
             } else {
                 fprintf(tempFile, "%s\n", line);
@@ -482,4 +534,116 @@ void addProduct() {
 
     fprintf(fp, "%s;%s;%.2f;%d;%s", s.product, s.category, s.price, s.quantity, s.description);
     fclose(fp);
+}
+
+float deg2rad(float deg) {
+    return deg * (M_PI / 180.0f);
+}
+
+float calculateDist(Coordinates a, Coordinates b) {
+    float lat1 = deg2rad(a.latitude);
+    float lon1 = deg2rad(a.longitude);
+    float lat2 = deg2rad(b.latitude);
+    float lon2 = deg2rad(b.longitude);
+
+    float dlat = lat2 - lat1;
+    float dlon = lon2 - lon1;
+
+    float haversine = sinf(dlat/2) * sinf(dlat/2) +
+                      cosf(lat1) * cosf(lat2) * sinf(dlon/2) * sinf(dlon/2);
+
+    float c = 2 * atan2f(sqrtf(haversine), sqrtf(1 - haversine));
+
+    return EARTH_RADIUS_KM * c;
+}
+
+int loadShopsFromFile(const char *filename, ShopUbi *shops, int maxShops) {
+    FILE *fp = fopen(filename, "r");
+    if (!fp) {
+        printf("Error opening file %s\n", filename);
+        return 0;
+    }
+
+    char line[256];
+    int count = 0;
+
+    while (fgets(line, sizeof(line), fp) && count < maxShops) {
+        // Eliminar salto de línea final
+        line[strcspn(line, "\n")] = 0;
+
+        // Parsear usando sscanf o strtok
+        char phoneStr[20];
+        float lat, lon;
+
+        int n = sscanf(line, "%49[^;];%99[^;];%19[^;];%49[^;];%f;%f",
+                       shops[count].name, shops[count].address, phoneStr, shops[count].email, &lat, &lon);
+        if (n == 6) {
+            shops[count].phone = atoi(phoneStr);
+            shops[count].coords.latitude = lat;
+            shops[count].coords.longitude = lon;
+            count++;
+        }
+    }
+
+    fclose(fp);
+    return count;
+}
+
+
+
+void find5NearestShops(ShopUbi *s, int numShops, Coordinates client, int *nearest_ids) {
+
+    float min_dist[5];
+    int min_id[5];
+    for (int i = 0; i < 5; i++) {
+        min_dist[i] = FLT_MAX;
+        min_id[i] = -1;
+    }
+
+    for (int i = 0; i < numShops; i++) {
+        float dist = calculateDist(s[i].coords, client);
+        for (int j = 0; j < 5; j++) {
+            if (dist < min_dist[j]) {
+                for (int k = 4; k > j; k--) {
+                    min_dist[k] = min_dist[k-1];
+                    min_id[k] = min_id[k-1];
+                }
+                min_dist[j] = dist;
+                min_id[j] = i;
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < 5; i++) {
+        nearest_ids[i] = min_id[i];
+    }
+}
+
+
+void proximityShops() {
+    ShopUbi shops[100];
+    int numShops = loadShopsFromFile("Shops.txt", shops, 100);
+
+    if (numShops == 0) {
+        printf("No shops loaded\n");
+        return;
+    }
+
+    Coordinates client;
+    printf("Introduce la latitud del cliente: ");
+    scanf("%f", &client.latitude);
+    printf("Introduce la longitud del cliente: ");
+    scanf("%f", &client.longitude);
+
+    int nearest_indices[5];
+    find5NearestShops(shops, numShops, client, nearest_indices);
+
+    printf("Las 5 botigas más cercanas son:\n");
+    for (int i = 0; i < 5; i++) {
+        int idx = nearest_indices[i];
+        if (idx != -1) {
+            printf("%s\n", shops[idx].name);
+        }
+    }
 }

@@ -17,6 +17,14 @@ typedef struct {
 	float longitude;
 } Coordinates;
 
+typedef struct {
+	char name[50];
+	char address[100];
+	int phone;
+	char email[50];
+	Coordinates coords;
+} ShopUbi;
+
 /*****************************************************************************
 * Purpose: Makes a copy of Coordinates.
 * Parameters: in: src = Coordinates to copy.
@@ -78,5 +86,7 @@ char OP_isInRange(int value, int low, int high, char include);
 * Return: Returns a float with the average rating.
 *****************************************************************************/
 float OP_calculateAvgRating(char **ratings, int n_ratings);
+
+long calculateDistance(Coordinates a, Coordinates b);
 
 #endif

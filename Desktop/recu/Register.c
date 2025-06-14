@@ -2,6 +2,8 @@
 #include <string.h>
 #include "Register.h"
 
+#include <stdlib.h>
+
 
 void registerShop() {
 
@@ -30,7 +32,11 @@ void registerShop() {
     fgets(shop.mail, sizeof(shop.mail), stdin);
     shop.mail[strlen(shop.mail)-1] = '\0';
 
-    fprintf(fp, "%s;%s;%d;%s\n", shop.shop, shop.adress, shop.phone, shop.mail);
+    float latitud = -90.0f + ((float)rand() / RAND_MAX) * 180.0f;
+    float longitud = -180.0f + ((float)rand() / RAND_MAX) * 360.0f;
+
+    fprintf(fp, "%s;%s;%d;%s;%.6f;%.6f\n", shop.shop, shop.adress, shop.phone, shop.mail, latitud, longitud);
+
 
     fclose(fp);
 
