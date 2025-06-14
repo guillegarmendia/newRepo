@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include <time.h>
+
 #include "Register.h"
 #include "Shop.h"
 #include "TDD.h"
+
 
 void showRegisterMenu() {
     printf("\n\t\t1.1 Register Shop");
@@ -18,12 +21,17 @@ void showStaffMenu() {
     printf("\nOption: ");
 }
 
+void showClientMenu() {
+    printf("\n\t\t1.1 Show 5 nearest shops");
+    printf("\nOption:");
+}
 void showMainMenu() {
     printf("\n\t\t1. Register\n\t\t2. Staff Access\n\t\t3. Client Login\n\t\t4. Exit");
     printf("\nOption: ");
 }
 
 int main() {
+    srand(time(NULL));
 
     printf("\n----------------------\n");
     printf("--LS ELECTRONICS HUB--\n");
@@ -32,6 +40,7 @@ int main() {
     int option = 0;
     int registerOption = 0;
     int staffOption = 0;
+    int clientOption = 0;
     int modifyOption = 0;
 
     do {
@@ -92,7 +101,17 @@ int main() {
                 break;
 
             case 3:
+                showClientMenu();
+                scanf("%d", &clientOption);
+                getchar();
 
+            switch(clientOption) {
+                case 1:
+                    proximityShops();
+
+                    break;
+
+            }
                 break;
 
             case 4:
