@@ -1,10 +1,5 @@
 # ninja log v6
-2	462	1749862129739277613	CMakeFiles/newRepo_dev.dir/Desktop/recu/main.c.o	f34efa187f67f3b4
-2	464	1749862129739813736	CMakeFiles/newRepo_dev.dir/Desktop/recu/Register.c.o	95f0f7209ee2e120
-465	912	1749862130202051676	newRepo_dev	aac225595e50732c
-8	496	1749863251706802425	CMakeFiles/newRepo_dev.dir/Desktop/recu/Shop.c.o	ee3bd1d36ad5973a
-2	369	1749863311447496288	CMakeFiles/newRepo_dev.dir/Desktop/recu/Shop.c.o	ee3bd1d36ad5973a
-1	342	1749863353117583366	CMakeFiles/newRepo_dev.dir/Desktop/recu/main.c.o	f34efa187f67f3b4
-342	670	1749863353458554801	newRepo_dev	b88ae8bd04af7c9d
 1	359	1749863411974062057	CMakeFiles/newRepo_dev.dir/Desktop/recu/main.c.o	f34efa187f67f3b4
+2	464	1749862129739813736	CMakeFiles/newRepo_dev.dir/Desktop/recu/Register.c.o	95f0f7209ee2e120
 359	689	1749863412332194706	newRepo_dev	b88ae8bd04af7c9d
+2	369	1749863311447496288	CMakeFiles/newRepo_dev.dir/Desktop/recu/Shop.c.o	ee3bd1d36ad5973a
