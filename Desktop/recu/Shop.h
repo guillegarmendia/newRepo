@@ -15,4 +15,6 @@ char product[MAX];
 
 void modifyShop(int modifyOption);
 
+void addProduct();
+
 #endif
