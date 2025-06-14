@@ -3,6 +3,7 @@
 
 #include "Register.h"
 #include "Shop.h"
+#include "Discount.h"
 #include "TDD.h"
 
 
@@ -15,14 +16,15 @@ void showRegisterMenu() {
 }
 
 void showStaffMenu() {
-    printf("\n\t\t1.1 Modify shop's configuration");
-    printf("\n\t\t1.2 Add product");
+    printf("\n\t\t2.1 Modify shop's configuration");
+    printf("\n\t\t2.2 Add product");
+    printf("\n\t\t2.3 Manage discounts & promotions");
     printf("\n\t\t1.4 Back");
     printf("\nOption: ");
 }
 
 void showClientMenu() {
-    printf("\n\t\t1.1 Show 5 nearest shops");
+    printf("\n\t\t3.1 Show 5 nearest shops");
     printf("\nOption:");
 }
 void showMainMenu() {
@@ -42,6 +44,7 @@ int main() {
     int staffOption = 0;
     int clientOption = 0;
     int modifyOption = 0;
+    int manageDiscOption = 0;
 
     do {
         showMainMenu();
@@ -93,7 +96,13 @@ int main() {
                     addProduct();
                 break;
 
-
+                case 3:
+                    printf("\n\t1.Create discount/promotion code\n\t2.Change discount/promotion code\n\t3.Cancel discount/promotion code");
+                    printf("\nOption: ");
+                    scanf("%d", &manageDiscOption);
+                    getchar();
+                    manageDisc(manageDiscOption);
+                    break;
                 default:
                     printf("Invalid option\n");
                 break;

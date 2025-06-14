@@ -13,7 +13,10 @@ add_executable(newRepo_dev
         Desktop/recu/Shop.h
         Desktop/recu/TDD.c
         Desktop/recu/TDD.h
-        "Desktop/recu/Llibreria Recuperació-20250406/operations.c")
+        "Desktop/recu/Llibreria Recuperació-20250406/operations.c"
+        Desktop/recu/Discount.h
+        Desktop/recu/Discount.c
+        Desktop/recu/Discount.c)
 
 # Colocar el ejecutable en Desktop/recu
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Desktop/recu)
