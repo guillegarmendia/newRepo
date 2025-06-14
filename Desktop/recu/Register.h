@@ -10,11 +10,16 @@ typedef struct {
     char mail[MAX];
     char worker[MAX];
     char password[MAX];
+    char client[MAX];
+    int numCard;
+    float balance;
 
-} Shop;
+} Register;
 
 void registerShop();
 
 void registerWorker();
+
+void registerClient();
 
 #endif

@@ -5,7 +5,7 @@
 
 void registerShop() {
 
-    Shop shop;
+    Register shop;
     FILE* fp = fopen("Shops.txt","a");
 
     if (fp == NULL) {
@@ -39,7 +39,7 @@ void registerShop() {
 
 void registerWorker() {
 
-    Shop shop;
+    Register shop;
     FILE* fp = fopen("Workers.txt","a");
 
     if (fp == NULL) {
@@ -66,5 +66,39 @@ void registerWorker() {
 
     fprintf(fp, "%s;%s;%s;%s\n", shop.worker, shop.mail, shop.password, shop.shop);
     fclose(fp);
+
+}
+
+void registerClient() {
+    Register r;
+    FILE* fp = fopen("Client.txt","a");
+
+    if (fp == NULL) {
+        printf("Error opening Client.txt\n");
+        return;
+    }
+
+    printf("Name: ");
+    fgets(r.client, sizeof(r.client), stdin);
+    r.client[strlen(r.client)-1] = '\0';
+
+
+    printf("Mail: ");
+    fgets(r.mail, sizeof(r.mail), stdin);
+    r.mail[strlen(r.mail)-1] = '\0';
+
+    printf("Password: ");
+    fgets(r.password, sizeof(r.password), stdin);
+    r.password[strlen(r.password)-1] = '\0';
+
+    printf("Card number: ");
+    scanf("%d", &r.numCard);
+    getchar();
+
+    printf("Balance: ");
+    scanf("%f", &r.balance);
+    getchar();
+
+    fprintf(fp, "%s;%s;%s;%d;%.2f\n", r.client, r.mail, r.password, r.numCard, r.balance);
 
 }

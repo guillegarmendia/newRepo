@@ -43,7 +43,7 @@ int main() {
                             registerWorker();
                             break;
                         case 3:
-
+                            registerClient();
                             break;
                         case 4:
                             printf("Returning to Menu\n");
