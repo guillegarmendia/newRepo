@@ -22,6 +22,6 @@ void registerWorker();
 
 void registerClient();
 
-void login();
+void login(int client);
 
 #endif
