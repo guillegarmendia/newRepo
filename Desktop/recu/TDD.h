@@ -11,4 +11,7 @@ void TEST_shouldReturnShop();
 float getLowestDist();
 void TEST_findDistante();
 
+int checkIsActive(char* start, char* end);
+void TEST_shouldReturnIfIsActive();
+
 #endif

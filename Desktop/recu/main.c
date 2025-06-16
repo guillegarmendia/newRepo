@@ -120,8 +120,11 @@ int main() {
                     proximityShops();
                     break;
                 case 2:
+                    showPromotions();
                     break;
-
+                default:
+                    printf("Invalid option\n");
+                break;
             }
                 break;
 
