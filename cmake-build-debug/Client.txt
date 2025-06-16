@@ -1,1 +1,10 @@
-Leo;leomessi@gmail.com;mesimesi;123456789;10000000.00
+pepe;pepe@gmail.com;pepe1234;123456789;10000000.00
+maria;maria@gmail.com;maria5678;987654321;2500.75
+luis;luis@yahoo.com;luispass;234567891;389.99
+ana;ana@hotmail.com;ana2025;345678912;15000.00
+carlos;carlos@mail.com;carpass1;456789123;720.50
+laura;laura@gmail.com;lau1234;567891234;998.10
+juan;juan@live.com;juanpass;678912345;120000.00
+elena;elena@outlook.com;elena321;789123456;450.00
+diego;diego@gmail.com;diegopwd;891234567;7850.45
+sofia;sofia@mail.com;sof2024;912345678;999.99
