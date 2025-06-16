@@ -6,6 +6,7 @@
 
 typedef struct {
     int code;
+    char codeString[MAX];
     char startDate[MAX];
     char endDate[MAX];
     char shop[MAX];
@@ -13,5 +14,8 @@ typedef struct {
 } Discount;
 
 void manageDisc(int option);
+
+int isActive(const char* start, const char* end);
+
 
 #endif
