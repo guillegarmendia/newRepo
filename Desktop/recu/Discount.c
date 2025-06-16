@@ -4,6 +4,7 @@
 
 #include <Discount.h>
 #include <stdlib.h>
+#include <time.h>
 
 void manageDisc(int option) {
     Discount d;
@@ -208,3 +209,19 @@ void manageDisc(int option) {
     }
 
 }
+
+
+int is_active(const char* start, const char* end) {
+    struct tm tStart = {0}, tEnd = {0};
+    time_t now = time(NULL);
+
+    strptime(start, "%d-%m-%Y", &tStart);
+    strptime(end, "%d-%m-%Y", &tEnd);
+
+    time_t startTime = mktime(&tStart);
+    time_t endTime = mktime(&tEnd);
+
+    return now >= startTime && now <= endTime;
+}
+
+
