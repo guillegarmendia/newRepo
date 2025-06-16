@@ -25,6 +25,7 @@ void showStaffMenu() {
 
 void showClientMenu() {
     printf("\n\t\t3.1 Show 5 nearest shops");
+    printf("\n\t\t3.2 Show available promotions x shop");
     printf("\nOption:");
 }
 void showMainMenu() {
@@ -117,9 +118,13 @@ int main() {
             switch(clientOption) {
                 case 1:
                     proximityShops();
-
                     break;
-
+                case 2:
+                    showPromotions();
+                    break;
+                default:
+                    printf("Invalid option\n");
+                break;
             }
                 break;
 

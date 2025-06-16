@@ -4,6 +4,7 @@
 
 #include <Discount.h>
 #include <stdlib.h>
+#include <time.h>
 
 void manageDisc(int option) {
     Discount d;
@@ -208,3 +209,75 @@ void manageDisc(int option) {
     }
 
 }
+
+
+int isActive(char* start, char* end) {
+    struct tm tStart = {0}, tEnd = {0};
+    time_t now = time(NULL);
+
+    strptime(start, "%d-%m-%Y", &tStart);
+    strptime(end, "%d-%m-%Y", &tEnd);
+
+    time_t startTime = mktime(&tStart);
+    time_t endTime = mktime(&tEnd);
+
+    return now >= startTime && now <= endTime;
+}
+
+
+int findShopIndex(char shops[][20], int count, char* shop) {
+    for (int i = 0; i < count; i++) {
+        if (strcmp(shops[i], shop) == 0)
+            return i;
+    }
+    return -1;
+}
+
+
+void showPromotions() {
+    FILE *fp = fopen("Discount.txt", "r");
+
+    if (!fp) {
+        perror("Couldn't open Discount.txt");
+    }
+
+    Discount d[100];
+    int count = 0;
+
+    while (!feof(fp) && count < 100) {  //Ponemos un máximo de 100 promos
+        fscanf(fp, "%[^;];%[^;];%[^;];%[^;];%[^\n]\n",d[count].codeString,d[count].startDate,d[count].endDate,
+            d[count].shop, d[count].applicableProducts);
+        count++;
+    }
+    fclose(fp);
+
+    char shops[10][20]; //10 tiendas
+    int shopPromoIndices[10][100];
+    int shopPromoCounts[10] = {0};
+    int shopCount = 0;
+
+    for (int i = 0; i < count; i++) {
+        if (isActive(d[i].startDate, d[i].endDate)) {
+            int idx = findShopIndex(shops, shopCount, d[i].shop);
+            if (idx == -1) {
+                strcpy(shops[shopCount], d[i].shop);
+                idx = shopCount;
+                shopCount++;
+            }
+            shopPromoIndices[idx][shopPromoCounts[idx]++] = i;
+        }
+    }
+
+    printf("\nPromotions available:\n");
+    for (int i = 0; i < shopCount; i++) {
+        printf("\nShop's name: %s\n", shops[i]);
+        for (int j = 0; j < shopPromoCounts[i]; j++) {
+            int idx = shopPromoIndices[i][j];
+            printf("  Code: %s, Applicable products: %s (from %s to %s)\n",
+                   d[idx].codeString, d[idx].applicableProducts,
+                   d[idx].startDate, d[idx].endDate);
+        }
+    }
+
+}
+

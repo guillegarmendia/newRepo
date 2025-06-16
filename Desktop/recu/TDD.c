@@ -1,7 +1,9 @@
 #include <float.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
+#include "Discount.h"
 #include "Shop.h"
 
 
@@ -68,3 +70,26 @@ void TEST_findDistante() {
 
     printf("Lowest dis: %.2f", dist);
 }
+
+int checkIsActive(char* start, char* end) {
+    struct tm tStart = {0}, tEnd = {0};
+    time_t now = time(NULL);
+
+    strptime(start, "%d-%m-%Y", &tStart);
+    strptime(end, "%d-%m-%Y", &tEnd);
+
+    time_t startTime = mktime(&tStart);
+    time_t endTime = mktime(&tEnd);
+
+    return now >= startTime && now <= endTime;
+}
+
+void TEST_shouldReturnIfIsActive() {
+    int result = checkIsActive("15-06-2020", "01-01-2080");
+
+    if (result != 1)
+        printf("Test failed: expected 1, got %d\n", result);
+    else
+        printf("Test passed\n");
+}
+
