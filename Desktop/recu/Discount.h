@@ -15,7 +15,9 @@ typedef struct {
 
 void manageDisc(int option);
 
-int isActive(const char* start, const char* end);
+int isActive(char* start, char* end);
+int findShopIndex(char shops[][20], int count, char* shop);
+void showPromotions();
 
 
 #endif
