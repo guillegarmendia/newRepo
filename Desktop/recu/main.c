@@ -19,7 +19,7 @@ void showStaffMenu() {
     printf("\n\t\t2.1 Modify shop's configuration");
     printf("\n\t\t2.2 Add product");
     printf("\n\t\t2.3 Manage discounts & promotions");
-    printf("\n\t\t1.4 Back");
+    printf("\n\t\t2.4 Back");
     printf("\nOption: ");
 }
 
@@ -80,6 +80,9 @@ int main() {
                 break;
 
             case 2:
+
+                login(0);
+
                 showStaffMenu();
                 scanf("%d", &staffOption);
                 getchar();
@@ -98,6 +101,8 @@ int main() {
                 break;
 
                 case 3:
+
+                    login(1);
                     printf("\n\t1.Create discount/promotion code\n\t2.Change discount/promotion code\n\t3.Cancel discount/promotion code");
                     printf("\nOption: ");
                     scanf("%d", &manageDiscOption);
@@ -111,6 +116,9 @@ int main() {
                 break;
 
             case 3:
+
+                login();
+
                 showClientMenu();
                 scanf("%d", &clientOption);
                 getchar();

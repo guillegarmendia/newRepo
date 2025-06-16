@@ -4,7 +4,6 @@
 
 #include <stdlib.h>
 
-
 void registerShop() {
 
     Register shop;
@@ -107,4 +106,84 @@ void registerClient() {
 
     fprintf(fp, "%s;%s;%s;%d;%.2f\n", r.client, r.mail, r.password, r.numCard, r.balance);
 
+}
+
+
+
+void login(int client) {
+
+    Register r;
+    char mail[MAX], password[MAX];
+    int ok = 0, found = 0;
+    char line[MAX];
+
+    if(client) {
+        while(!ok) {
+            FILE* fp = fopen("Client.txt", "r");
+            if (fp == NULL) {
+                printf("Error opening Client.txt\n");
+            }
+
+            printf("Enter mail: ");
+            fgets(mail, sizeof(mail), stdin);
+            mail[strlen(mail)-1] = '\0';
+
+            fgets(line,sizeof(line), fp);
+
+            while(!feof(fp)) {
+                line[strlen(line)-1] = '\0';
+
+                int i = 0,k = 0, j = 0, separation = 0;
+
+                for( i = 0; line[i] != '\0'; i++) {
+                    if(line[i] == ';') {
+                        separation++;
+                        i++;
+                    }
+
+                    if(separation == 1) {
+                        r.mail[k++] = line[i];
+                    }
+
+                    if(separation == 2) {
+                        r.mail[k] = '\0';
+                        r.password[j++] = line[i];
+                    }
+
+                }
+
+                r.password[j] = '\0';
+
+                if(strcmp(mail, r.mail) == 0) {
+                    found = 1;
+                    break;
+                }
+
+
+                fgets(line,sizeof(line), fp);
+            }
+
+            if(found) {
+                while(!ok){
+                printf("Password: ");
+                fgets(password, sizeof(password), stdin);
+                password[strlen(password)-1] = '\0';
+
+                if(strcmp(password, r.password) == 0) {
+                    ok = 1;
+                    printf("\nSuccessfully logged in!\n");
+                } else {
+                    printf("\nWrong password, try again...\n");
+                }
+                }
+            } else {
+                printf("This mail does not exist in the database, enter again...\n\n");
+            }
+        }
+
+    } else {
+
+
+
+    }
 }

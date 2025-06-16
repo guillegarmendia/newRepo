@@ -631,15 +631,15 @@ void proximityShops() {
     }
 
     Coordinates client;
-    printf("Introduce la latitud del cliente: ");
+    printf("Introduce your latitud: ");
     scanf("%f", &client.latitude);
-    printf("Introduce la longitud del cliente: ");
+    printf("Introduce your longitude: ");
     scanf("%f", &client.longitude);
 
     int nearest_indices[5];
     find5NearestShops(shops, numShops, client, nearest_indices);
 
-    printf("Las 5 botigas más cercanas son:\n");
+    printf("The top 5 nearest shops are:\n");
     for (int i = 0; i < 5; i++) {
         int idx = nearest_indices[i];
         if (idx != -1) {

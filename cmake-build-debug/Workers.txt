@@ -1,1 +1,11 @@
 Pepe;pepe@gmail.com;pepe4321;Caprabo
+María;maria@gmail.com;maria123;Lidl
+Luis;luis@yahoo.com;luis2024;Mercadona
+Ana;ana@hotmail.com;ana321;Carrefour
+Carlos;carlos@mail.com;carlos456;Consum
+Laura;laura@gmail.com;laura789;Alcampo
+Juan;juan@live.com;juanpass;Eroski
+Elena;elena@outlook.com;elena987;Bonpreu
+Diego;diego@gmail.com;diego111;Dia
+Sofía;sofia@mail.com;sofia000;Lidl
+Raúl;raul@mail.com;raul333;Mercadona
