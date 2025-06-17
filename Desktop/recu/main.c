@@ -4,6 +4,7 @@
 #include "Register.h"
 #include "Shop.h"
 #include "Discount.h"
+#include "Client.h"
 #include "TDD.h"
 
 
@@ -36,6 +37,8 @@ void showMainMenu() {
 int main() {
     srand(time(NULL));                      //Para calcular valores random
 
+
+    clientSegmentation();
     printf("\n----------------------\n");
     printf("--LS ELECTRONICS HUB--\n");
     printf("----------------------\n");
@@ -117,7 +120,7 @@ int main() {
 
             case 3:
 
-                login();
+                login(0);
 
                 showClientMenu();
                 scanf("%d", &clientOption);
