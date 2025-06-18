@@ -14,4 +14,9 @@ void TEST_findDistante();
 int checkIsActive(char* start, char* end);
 void TEST_shouldReturnIfIsActive();
 
+float calculateAverage(float a, float b);
+void TEST_returnAverage();
+
+
+
 #endif
