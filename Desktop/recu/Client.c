@@ -95,3 +95,51 @@ void clientQuestionnaire() {
 
     printf("\nAnswers saved!\n");
 }
+
+
+void analyzeQuestionnaire() {
+    FILE *fp = fopen("Client.txt", "r");
+    char line[MAX];
+    int i, j = 0, k = 0;
+    int numClients = 0;
+
+    fgets(line, sizeof(line), fp);
+    while(!feof(fp)) {
+        fgets(line, sizeof(line), fp);
+        numClients++;
+    }
+
+    fclose(fp);
+
+    fp = fopen("Questionnaire.txt", "r");
+
+    int costs[numClients][MAX];
+    char age[MAX], electricCost[MAX];
+
+    fgets(line, sizeof(line), fp);
+    while(!feof(fp)) {
+        line[strlen(line)-1] = '\0';
+        int separation = 0;
+
+        for( i = 0; line[i] != '\0'; i++) {
+            if(line[i] == ';') {
+                separation++;
+                i++;
+            }
+
+            if(separation == 3) {
+                age[j++] = line[i];
+            }
+
+            if(separation == 4) {
+                age[j] = '\0';
+                electricCost[k++] = line[i];
+            }
+
+        }
+
+        electricCost[k] = '\0';
+
+        fgets(line, sizeof(line), fp);
+    }
+}
