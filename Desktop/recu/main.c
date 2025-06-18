@@ -30,6 +30,7 @@ void showStaffMenu() {
 void showClientMenu() {
     printf("\n\t\t3.1 Show 5 nearest shops");
     printf("\n\t\t3.2 Show available promotions x shop");
+    printf("\n\t\t3.3 Rate shop & worker");
     printf("\nOption:");
 }
 void showMainMenu() {
@@ -40,7 +41,6 @@ void showMainMenu() {
 int main() {
     srand(time(NULL));                      //Para calcular valores random
 
-    rateShop();
     printf("\n----------------------\n");
     printf("--LS ELECTRONICS HUB--\n");
     printf("----------------------\n");
@@ -107,7 +107,7 @@ int main() {
 
                 case 3:
 
-                   // login(1);
+                    login(1);
                     printf("\n\t1.Create discount/promotion code\n\t2.Change discount/promotion code\n\t3.Cancel discount/promotion code");
                     printf("\nOption: ");
                     scanf("%d", &manageDiscOption);
@@ -147,6 +147,11 @@ int main() {
                 case 2:
                     showPromotions();
                     break;
+
+                case 3:
+                    rateShop();
+                break;
+
                 default:
                     printf("Invalid option\n");
                 break;
