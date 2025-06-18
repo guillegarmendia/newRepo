@@ -68,7 +68,8 @@
 				3,
 				5,
 				7,
-				9
+				9,
+				10
 			]
 		}
 	],
@@ -106,7 +107,8 @@
 				3,
 				5,
 				7,
-				9
+				9,
+				10
 			]
 		},
 		{
@@ -116,7 +118,8 @@
 				2,
 				4,
 				6,
-				8
+				8,
+				11
 			]
 		}
 	],
@@ -177,6 +180,17 @@
 			"compileGroupIndex" : 0,
 			"path" : "Desktop/recu/Discount.c",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Desktop/recu/Client.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Desktop/recu/Client.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

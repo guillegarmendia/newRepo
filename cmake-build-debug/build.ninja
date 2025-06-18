@@ -91,6 +91,13 @@ build CMakeFiles/newRepo_dev.dir/Desktop/recu/Discount.c.o: C_COMPILER__newRepo_
   OBJECT_DIR = CMakeFiles/newRepo_dev.dir
   OBJECT_FILE_DIR = CMakeFiles/newRepo_dev.dir/Desktop/recu
 
+build CMakeFiles/newRepo_dev.dir/Desktop/recu/Client.c.o: C_COMPILER__newRepo_dev_unscanned_Debug /Users/guille/Desktop/newRepo-dev/Desktop/recu/Client.c || cmake_object_order_depends_target_newRepo_dev
+  DEP_FILE = CMakeFiles/newRepo_dev.dir/Desktop/recu/Client.c.o.d
+  FLAGS = -g -std=gnu11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/guille/Desktop/newRepo-dev/Desktop/recu
+  OBJECT_DIR = CMakeFiles/newRepo_dev.dir
+  OBJECT_FILE_DIR = CMakeFiles/newRepo_dev.dir/Desktop/recu
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target newRepo_dev
@@ -99,7 +106,7 @@ build CMakeFiles/newRepo_dev.dir/Desktop/recu/Discount.c.o: C_COMPILER__newRepo_
 #############################################
 # Link the executable newRepo_dev
 
-build newRepo_dev: C_EXECUTABLE_LINKER__newRepo_dev_Debug CMakeFiles/newRepo_dev.dir/Desktop/recu/main.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Register.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Shop.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/TDD.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Llibreria_Recuperació-20250406/operations.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Discount.c.o
+build newRepo_dev: C_EXECUTABLE_LINKER__newRepo_dev_Debug CMakeFiles/newRepo_dev.dir/Desktop/recu/main.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Register.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Shop.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/TDD.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Llibreria_Recuperació-20250406/operations.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Discount.c.o CMakeFiles/newRepo_dev.dir/Desktop/recu/Client.c.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk
   OBJECT_DIR = CMakeFiles/newRepo_dev.dir
   POST_BUILD = :

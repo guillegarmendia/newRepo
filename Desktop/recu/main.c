@@ -4,6 +4,7 @@
 #include "Register.h"
 #include "Shop.h"
 #include "Discount.h"
+#include "Client.h"
 #include "TDD.h"
 
 
@@ -19,7 +20,8 @@ void showStaffMenu() {
     printf("\n\t\t2.1 Modify shop's configuration");
     printf("\n\t\t2.2 Add product");
     printf("\n\t\t2.3 Manage discounts & promotions");
-    printf("\n\t\t2.4 Back");
+    printf("\n\t\t2.4 Segmentate clients");
+    printf("\n\t\t2.5 Back");
     printf("\nOption: ");
 }
 
@@ -35,6 +37,7 @@ void showMainMenu() {
 
 int main() {
     srand(time(NULL));                      //Para calcular valores random
+
 
     printf("\n----------------------\n");
     printf("--LS ELECTRONICS HUB--\n");
@@ -81,7 +84,7 @@ int main() {
 
             case 2:
 
-                login(0);
+             //   login(0);
 
                 showStaffMenu();
                 scanf("%d", &staffOption);
@@ -102,12 +105,16 @@ int main() {
 
                 case 3:
 
-                    login(1);
+                   // login(1);
                     printf("\n\t1.Create discount/promotion code\n\t2.Change discount/promotion code\n\t3.Cancel discount/promotion code");
                     printf("\nOption: ");
                     scanf("%d", &manageDiscOption);
                     getchar();
                     manageDisc(manageDiscOption);
+                    break;
+
+                case 4:
+                    clientSegmentation();
                     break;
                 default:
                     printf("Invalid option\n");
@@ -117,7 +124,7 @@ int main() {
 
             case 3:
 
-                login();
+                login(0);
 
                 showClientMenu();
                 scanf("%d", &clientOption);
