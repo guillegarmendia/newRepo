@@ -196,3 +196,63 @@ void analyzeQuestionnaire() {
 
 
 }
+
+
+int isShopRepeated(char shops[][MAX], int count, char* newShop) {
+    for (int i = 0; i < count; i++) {
+        if (strcmp(shops[i], newShop) == 0)
+            return 1;
+    }
+    return 0;
+}
+
+
+void rateShop() {
+    FILE *fp = fopen("Shops.txt", "r");
+    char line[MAX];
+    char shops[20][MAX];
+    int shopCount = 0;
+    int i ,shopOption, shopRating;
+
+
+    fgets(line, sizeof(line), fp);
+    while(!feof(fp)) {
+        line[strlen(line)-1] = '\0';
+        char shopName[MAX];
+
+        for (i = 0; line[i] !=';'; i++) {
+            shopName[i] = line[i];
+        }
+
+        shopName[i] = '\0';
+
+        if (!isShopRepeated(shops, shopCount, shopName)) {
+            strcpy(shops[shopCount], shopName);
+            shopCount++;
+        }
+
+        fgets(line, sizeof(line), fp);
+    }
+
+    fclose(fp);
+
+    printf("\nAvailable shops: ");
+    for (i = 0; i < shopCount; i++) {
+        printf("\n\t%d. %s ", i+1, shops[i]);
+    }
+
+    printf("\n\nWhich one do you want to rate? ");
+    scanf("%d", &shopOption);
+    getchar();
+
+    shopOption = shopOption - 1;
+
+    while(shopRating <= 0 || shopRating >= 6) {
+        printf("Enter from 1 - 5 starts for %s: ", shops[shopOption]);
+        scanf("%d", &shopRating);
+        getchar();
+    }
+
+
+
+}
