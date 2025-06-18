@@ -21,6 +21,7 @@ void showStaffMenu() {
     printf("\n\t\t2.2 Add product");
     printf("\n\t\t2.3 Manage discounts & promotions");
     printf("\n\t\t2.4 Segmentate clients");
+    printf("\n\t\t2.5 Client questionnaire");
     printf("\n\t\t2.5 Back");
     printf("\nOption: ");
 }
@@ -116,6 +117,10 @@ int main() {
                 case 4:
                     clientSegmentation();
                     break;
+
+                case 5:
+                    clientQuestionnaire();
+                break;
                 default:
                     printf("Invalid option\n");
                 break;

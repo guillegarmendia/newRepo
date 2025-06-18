@@ -54,7 +54,40 @@ void clientSegmentation() {
 
     }
 
+}
 
+
+void clientQuestionnaire() {
+    char city[MAX];
+    char lastProduct[MAX];
+    char shop[MAX];
+    char *age[MAX] = {"-18", "18-35", "36-50", "+60"};
+    int ageOption;
+    int cost;
+
+    printf("Welcome to the questionnaire, answer the following questions. ");
+    printf("\n\tEnter your city: ");
+    fgets(city, sizeof(city), stdin);
+    city[strlen(city)-1] = '\0';
+
+    printf("\n\tEnter the last product you bought: ");
+    fgets(lastProduct, sizeof(lastProduct), stdin);
+    lastProduct[strlen(lastProduct)-1] = '\0';
+
+    printf("\n\tEnter the shop you usually buy: ");
+    fgets(shop, sizeof(shop), stdin);
+    shop[strlen(shop)-1] = '\0';
+
+    while(ageOption >= 5 || ageOption <= 0) {
+        printf("\n\t\t1. (-18)\n\t\t2. (18-35)\n\t\t3. (35-59)\n\t\t4. (+60)");
+        printf("\n\tEnter your age: ");
+        scanf("%d", &ageOption);
+        getchar();
+    }
+
+    printf("\n\tHow much do you usually spend on electric components? ");
+    scanf("%d", &cost);
+    getchar();
 
 
 }
