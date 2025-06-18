@@ -1,0 +1,2 @@
+pepe;pepe@gmail.com;pepe1234;123456789;10000000.00;drinks
+maria;maria@gmail.com;maria5678;987654321;2500.75;fruits
