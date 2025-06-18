@@ -1,0 +1,2 @@
+Mercadona;5;Luis;5
+Lidl;2;Sofía;3
