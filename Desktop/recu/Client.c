@@ -64,6 +64,7 @@ void clientQuestionnaire() {
     char *age[MAX] = {"-18", "18-35", "36-50", "+60"};
     int ageOption;
     int cost;
+    FILE * fp = fopen("Questionnaire.txt", "a");
 
     printf("Welcome to the questionnaire, answer the following questions. ");
     printf("\n\tEnter your city: ");
@@ -89,5 +90,8 @@ void clientQuestionnaire() {
     scanf("%d", &cost);
     getchar();
 
+    fprintf(fp, "%s;%s;%s;%s;%d\n", city, lastProduct,shop,age[ageOption - 1], cost);
+    fclose(fp);
 
+    printf("\nAnswers saved!\n");
 }
