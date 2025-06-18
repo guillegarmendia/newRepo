@@ -93,3 +93,16 @@ void TEST_shouldReturnIfIsActive() {
         printf("Test passed\n");
 }
 
+float calculateAverage(float a, float b) {
+    float avg = (a+b)/2;
+    return avg;
+}
+
+
+void TEST_returnAverage() {
+    float a = 10, b = 20;
+    float average = calculateAverage(a,b);
+    printf("Average: %.2f\n", average);
+}
+
+

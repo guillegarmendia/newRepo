@@ -1,1 +1,10 @@
 Barcelona;Powerade;Condis;18-35;100
+Madrid;CocaCola;Mercadona;-18;50
+Valencia;Pan;Consum;35-59;80
+Sevilla;Yogur;Carrefour;+60;30
+Bilbao;RedBull;Eroski;18-35;120
+Zaragoza;Manzanas;Alcampo;35-59;70
+Málaga;Chicles;Dia;-18;45
+Murcia;Cerveza;Lidl;35-59;90
+Palma;Donuts;Caprabo;18-35;110
+Granada;Galletas;Bonpreu;+60;40

@@ -22,6 +22,7 @@ void showStaffMenu() {
     printf("\n\t\t2.3 Manage discounts & promotions");
     printf("\n\t\t2.4 Segmentate clients");
     printf("\n\t\t2.5 Client questionnaire");
+    printf("\n\t\t2.6 Analyze questionnaire");
     printf("\n\t\t2.5 Back");
     printf("\nOption: ");
 }
@@ -39,6 +40,7 @@ void showMainMenu() {
 int main() {
     srand(time(NULL));                      //Para calcular valores random
 
+    TEST_returnAverage();
 
     printf("\n----------------------\n");
     printf("--LS ELECTRONICS HUB--\n");
@@ -120,6 +122,10 @@ int main() {
 
                 case 5:
                     clientQuestionnaire();
+                break;
+
+                case 6:
+                    analyzeQuestionnaire();
                 break;
                 default:
                     printf("Invalid option\n");

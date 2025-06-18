@@ -3,6 +3,8 @@
 
 #include "Client.h"
 
+#include <stdlib.h>
+
 void clientSegmentation() {
     Client c;
     int numClients;
@@ -94,4 +96,103 @@ void clientQuestionnaire() {
     fclose(fp);
 
     printf("\nAnswers saved!\n");
+}
+
+
+void analyzeQuestionnaire() {
+    FILE *fp = fopen("Client.txt", "r");
+    char line[MAX];
+    int i, j = 0, k = 0;
+    int numClients = 0;
+
+    fgets(line, sizeof(line), fp);
+    while(!feof(fp)) {
+        fgets(line, sizeof(line), fp);
+        numClients++;
+    }
+
+    fclose(fp);
+
+    fp = fopen("Questionnaire.txt", "r");
+
+    float costs[4][numClients];
+    int ageType;
+    int a = 0, b = 0, c = 0, d = 0;
+    char age[MAX], electricCost[MAX];
+
+    fgets(line, sizeof(line), fp);
+    while(!feof(fp)) {
+        line[strlen(line)-1] = '\0';
+        int separation = 0;
+        j = 0, k = 0;
+        for( i = 0; line[i] != '\0'; i++) {
+            if(line[i] == ';') {
+                separation++;
+                i++;
+            }
+
+            if(separation == 3) {
+                age[j++] = line[i];
+            }
+
+            if(separation == 4) {
+                age[j] = '\0';
+                electricCost[k++] = line[i];
+            }
+
+        }
+
+        electricCost[k] = '\0';
+
+
+            if(strcmp(age,"-18") == 0 ) {
+                costs[0][a++] = atof(electricCost);
+            } if(strcmp(age,"18-35") == 0 ) {
+                costs[1][b++] = atof(electricCost);
+            } if(strcmp(age,"35-59") == 0 ) {
+                costs[2][c++] = atof(electricCost);
+            } if(strcmp(age,"+60") == 0 ) {
+                costs[3][d++] = atof(electricCost);
+            }
+
+        fgets(line, sizeof(line), fp);
+    }
+
+
+        float mediaA = 0.0, mediaB = 0.0, mediaC = 0.0, mediaD = 0.0;
+        float sumaA = 0.0, sumaB = 0.0, sumaC = 0.0, sumaD = 0.0;
+
+    for(i = 0; i < a; i++) {
+        sumaA += costs[0][i];
+    }
+
+    mediaA = sumaA/a;
+
+    printf("\nAverage of (-18): %.2f€\n", mediaA);
+
+    for(i = 0; i < b; i++) {
+        sumaB += costs[1][i];
+    }
+
+    mediaB = sumaB/b;
+
+    printf("Average of (18-35): %.2f€\n", mediaB);
+
+    for(i = 0; i < c; i++) {
+        sumaC += costs[2][i];
+    }
+
+    mediaC = sumaC/c;
+
+    printf("Average of (35-59): %.2f€\n", mediaC);
+
+    for(i = 0; i < d; i++) {
+        sumaD += costs[3][i];
+    }
+
+    mediaD = sumaD/d;
+
+    printf("Average of (+60): %.2f€\n", mediaD);
+
+
 }

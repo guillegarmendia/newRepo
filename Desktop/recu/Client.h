@@ -13,3 +13,5 @@ typedef struct {
 void clientSegmentation();
 
 void clientQuestionnaire();
+
+void analyzeQuestionnaire();
