@@ -234,7 +234,6 @@ void login(int client) {
                     fgets(password, sizeof(password), stdin);
                     password[strlen(password)-1] = '\0';
 
-                    printf("\nPass: %s\tr.Pass: %s\n", password, r.password);
                     if(strcmp(password, r.password) == 0) {
                         ok = 1;
                         printf("\nSuccessfully logged in!\n");

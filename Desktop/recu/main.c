@@ -12,7 +12,7 @@ void showRegisterMenu() {
     printf("\n\t\t1.1 Register Shop");
     printf("\n\t\t1.2 Register Staff Member");
     printf("\n\t\t1.3 Register Customer");
-    printf("\n\t\t1.4 Back");
+    printf("\n\t1.4 Back");
     printf("\nOption: ");
 }
 
@@ -23,7 +23,8 @@ void showStaffMenu() {
     printf("\n\t\t2.4 Segmentate clients");
     printf("\n\t\t2.5 Client questionnaire");
     printf("\n\t\t2.6 Analyze questionnaire");
-    printf("\n\t\t2.5 Back");
+    printf("\n\t\t2.7 Check ratings");
+    printf("\n\t2.8 Back");
     printf("\nOption: ");
 }
 
@@ -31,6 +32,7 @@ void showClientMenu() {
     printf("\n\t\t3.1 Show 5 nearest shops");
     printf("\n\t\t3.2 Show available promotions x shop");
     printf("\n\t\t3.3 Rate shop & worker");
+    printf("\n\t3.4 Back");
     printf("\nOption:");
 }
 void showMainMenu() {
@@ -86,7 +88,7 @@ int main() {
 
             case 2:
 
-             //   login(0);
+                login(0);
 
                 showStaffMenu();
                 scanf("%d", &staffOption);
@@ -126,6 +128,14 @@ int main() {
                 case 6:
                     analyzeQuestionnaire();
                 break;
+
+                case 7:
+                    checkRatings();
+                break;
+
+                case 8:
+                    printf("Returning to Menu\n");
+                break;
                 default:
                     printf("Invalid option\n");
                 break;
@@ -150,6 +160,10 @@ int main() {
 
                 case 3:
                     rateShop();
+                break;
+
+                case 4:
+                    printf("Returning to Menu\n");
                 break;
 
                 default:
