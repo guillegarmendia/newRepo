@@ -19,3 +19,5 @@ void analyzeQuestionnaire();
 void rateShop();
 
 int isShopRepeated(char shops[][MAX], int count, char* newShop);
+
+void checkRatings();

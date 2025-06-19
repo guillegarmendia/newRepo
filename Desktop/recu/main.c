@@ -41,6 +41,7 @@ void showMainMenu() {
 int main() {
     srand(time(NULL));                      //Para calcular valores random
 
+    checkRatings();
     printf("\n----------------------\n");
     printf("--LS ELECTRONICS HUB--\n");
     printf("----------------------\n");

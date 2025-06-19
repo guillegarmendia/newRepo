@@ -330,3 +330,59 @@ void rateShop() {
 
     fclose(fp);
 }
+
+
+void checkRatings() {
+    FILE *fp = fopen("Ratings.txt", "r");
+    FILE *temp = fopen("Ratings_temp.txt", "w");
+
+    char line[MAX];
+    char shop[MAX], worker[MAX];
+    char aux[10];
+    int shopRating = 0, workerRating = 0;
+    int numRating = 1;
+
+    fgets(line, sizeof(line), fp);
+    while(!feof(fp)) {
+
+        line[strlen(line)-1] = '\0';
+        int separation = 0, j = 0, g = 0, k = 0, p = 0;
+
+        for(int i = 0; line[i] != '\0'; i++) {
+            if(line[i] == ';') {
+                separation++;
+                i++;
+            }
+
+            if(separation == 0) {
+                shop[p++] = line[i];
+            }
+
+            if(separation == 1) {
+                shop[p] = '\0';
+                aux[j++] = line[i];
+            }
+
+            if(separation == 2) {
+                aux[j] = '\0';
+                shopRating = atoi(aux);
+                worker[g++] = line[i];
+            }
+
+            if(separation == 3) {
+                worker[g] = '\0';
+                aux[k++] = line[i];
+            }
+        }
+
+        aux[k] = '\0';
+        workerRating = atoi(aux);
+
+        printf("\nRating number %d: ",numRating);
+        printf("\n\t %s's rating: %d stars - %s's rating: %d stars", shop, shopRating, worker, workerRating);
+
+
+        fgets(line, sizeof(line), fp);
+        numRating++;
+    }
+}
