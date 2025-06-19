@@ -336,15 +336,18 @@ void checkRatings() {
     FILE *fp = fopen("Ratings.txt", "r");
     FILE *temp = fopen("Ratings_temp.txt", "w");
 
+
     char line[MAX];
     char shop[MAX], worker[MAX];
     char aux[10];
     int shopRating = 0, workerRating = 0;
     int numRating = 1;
+    int exit = 0;
+    char cont[MAX], option[MAX];
+
 
     fgets(line, sizeof(line), fp);
     while(!feof(fp)) {
-
         line[strlen(line)-1] = '\0';
         int separation = 0, j = 0, g = 0, k = 0, p = 0;
 
@@ -378,11 +381,62 @@ void checkRatings() {
         aux[k] = '\0';
         workerRating = atoi(aux);
 
-        printf("\nRating number %d: ",numRating);
-        printf("\n\t %s's rating: %d stars - %s's rating: %d stars", shop, shopRating, worker, workerRating);
+
+
+        if(!exit) {
+            printf("\nRating number %d: ",numRating);
+            printf("\n\t %s's rating: %d stars - %s's rating: %d stars", shop, shopRating, worker, workerRating);
+
+            while(1){
+
+                printf("\nDo you want to delete this rating? Enter 'YES' or 'NO': ");
+                fgets(option, sizeof(option), stdin);
+                option[strlen(option)-1] = '\0';
+
+
+                if(strcmp(option, "YES") == 0) {
+                    printf("Rating number %d has been deleted\n", numRating);
+                    break;
+                }
+
+                if(strcmp(option, "NO") == 0) {
+                    printf("Rating number %d has NOT been deleted\n", numRating);
+                    fprintf(temp, "%s\n", line);
+                    break;
+                }
+            }
+
+
+            while(1) {
+                printf("Do you want to continue? Enter 'YES' or 'NO': ");
+                fgets(cont, sizeof(cont), stdin);
+                cont[strlen(cont)-1] = '\0';
+
+                if(strcmp(cont, "YES") == 0) {
+                    printf("Ok, next rating\n");
+                    break;
+                } if(strcmp(cont, "NO") == 0) {
+                    printf("Ratings check is over");
+                    exit = 1;
+                    break;
+                }
+            }
+
+            } else {
+                fprintf(temp, "%s\n", line);
+            }
+
+
 
 
         fgets(line, sizeof(line), fp);
         numRating++;
     }
+
+
+    fclose(fp);
+    fclose(temp);
+
+    remove("Ratings.txt");
+    rename("Ratings_temp.txt", "Ratings.txt");
 }
